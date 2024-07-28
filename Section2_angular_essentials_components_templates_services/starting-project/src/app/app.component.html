@@ -1,21 +1,24 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<app-header />
 
-<style>
-  :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+<main>
+    <ul id="users">
+        <li>
+            <app-user [avatar]="users[0].avatar" [name]="users[0].name" [id]="users[0].id"
+            (select)="onSelectUser($event)"/>
+        </li>
+        <li>
+            <app-user [avatar]="users[1].avatar" [name]="users[1].name" [id]="users[1].id"
+            (select)="onSelectUser($event)"/>
+        </li>
+        <li>
+            <app-user [avatar]="users[2].avatar" [name]="users[2].name" [id]="users[2].id"
+            (select)="onSelectUser($event)"/>
+        </li>
+        <li>
+            <app-user [avatar]="users[3].avatar" [name]="users[3].name" [id]="users[3].id"
+            (select)="onSelectUser($event)"/>
+        </li>
+    </ul>
 
-</style>
-<app-header></app-header>
+    <app-tasks [name]="selectedUser.name"></app-tasks>
+</main>
