@@ -3,20 +3,21 @@ import {HeaderComponent} from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { DUMMY_USERS } from './dummy-users';
 import { TasksComponent } from './tasks/tasks.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone:true,
-  imports:[HeaderComponent,UserComponent,TasksComponent]
+  imports:[HeaderComponent,UserComponent,TasksComponent,CommonModule]
 })
 export class AppComponent {
     users=DUMMY_USERS;
-    selectedUserId='u1';
+    selectedUserId?:string;
 
     get selectedUser(){
-        return this.users.find((user)=>user.id===this.selectedUserId)!
+        return this.users.find((user)=>user.id===this.selectedUserId)
     }
 
     onSelectUser(id:string){
