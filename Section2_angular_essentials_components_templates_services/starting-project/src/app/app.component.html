@@ -4,11 +4,11 @@
     <ul id="users">
         <li *ngFor="let user of users">
                 <app-user [user]="user"
-                (select)="onSelectUser($event)"/>
+                (select)="onSelectUser($event)" [selected]="user.id===selectedUserId"/>
         </li>
     </ul>
 
-    <app-tasks *ngIf="selectedUser; else logout" [name]="selectedUser?selectedUser.name:''" />
+    <app-tasks *ngIf="selectedUser; else logout" [name]="selectedUser?selectedUser.name:''" [userId]="selectedUser.id"/>
     <ng-template #logout>
         <p>No users selected</p>
     </ng-template>
