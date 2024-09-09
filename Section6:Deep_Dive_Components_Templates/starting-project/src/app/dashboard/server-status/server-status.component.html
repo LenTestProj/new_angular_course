@@ -1,0 +1,19 @@
+<div>
+    <ng-container *ngIf="currentStatus === 'online'; else offlineOrUnknown">
+      <p>Servers are online</p>
+      <p>All systems are operational.</p>
+    </ng-container>
+
+    <ng-template #offlineOrUnknown>
+      <ng-container *ngIf="currentStatus === 'offline'; else unknown">
+        <p>Servers are offline</p>
+        <p>Functionality should be restored soon.</p>
+      </ng-container>
+
+      <ng-template #unknown>
+        <p>Server status is unknown</p>
+        <p>Fetching server status failed.</p>
+      </ng-template>
+    </ng-template>
+</div>
+
