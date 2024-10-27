@@ -1,19 +1,31 @@
-<div>
-    <ng-container *ngIf="currentStatus === 'online'; else offlineOrUnknown">
-      <p>Servers are online</p>
-      <p>All systems are operational.</p>
+<!-- <div [class.status]="currentStatus==='online'"> -->
+
+<div [class]="{
+    status:true,
+    'status-online':currentStatus()==='online','status-offline':currentStatus()==='offline',
+    'status-unknown':currentStatus()==='unknown'
+    }"
+    [style]="{
+        fontSize:'18px'
+    }"
+    [style.fontSize]="'16px'"
+    >
+    <ng-container *ngIf="currentStatus() === 'online'; else offlineOrUnknown">
+        <p>Servers are online</p>
+        <p>All systems are operational.</p>
     </ng-container>
 
     <ng-template #offlineOrUnknown>
-      <ng-container *ngIf="currentStatus === 'offline'; else unknown">
-        <p>Servers are offline</p>
-        <p>Functionality should be restored soon.</p>
-      </ng-container>
+        <ng-container *ngIf="currentStatus() === 'offline'; else unknown">
+            <p>Servers are offline</p>
+            <p>Functionality should be restored soon.</p>
+        </ng-container>
 
-      <ng-template #unknown>
-        <p>Server status is unknown</p>
-        <p>Fetching server status failed.</p>
-      </ng-template>
+        <ng-template #unknown>
+            <p>Server status is unknown</p>
+            <p>Fetching server status failed.</p>
+        </ng-template>
     </ng-template>
-</div>
+</div>    
+
 
