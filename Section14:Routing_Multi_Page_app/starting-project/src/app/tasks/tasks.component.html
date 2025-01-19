@@ -1,0 +1,17 @@
+<p>
+    <a routerLink="./" [queryParams]="{order:order=== 'asc'?'desc':'asc'}">
+        Sort {{order==='asc'?'Descending':'Ascending'}}
+    </a>
+</p>
+
+<ul *ngIf="userTasks.length>0; else noTasks">
+    <li  *ngFor="let task of userTasks;">
+      <app-task [task]="task" />
+    </li>
+</ul>
+
+<ng-template #noTasks>
+    <p>There are no tasks yet. Start adding some!</p>
+  </ng-template>
+
+

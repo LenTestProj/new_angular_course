@@ -1,0 +1,26 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <h2>Login</h2>
+
+    <div class="control-row">
+        <div class="control no-margin">
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" ngModel required email #email="ngModel"/> <!--NgModel registers the input element with angular. Required is a directive to check if the field is not empty. Required field is used since ngModel allows angular to take control of the field -->
+        </div>
+
+        <div class="control no-margin">
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" ngModel required minlength="6"
+        #password="ngModel"/>
+        </div>
+
+        <button class="button">Login</button>
+    </div>
+
+    <p class="control-error" *ngIf="email.touched && email.dirty && email.invalid">
+        Invalid Email address entered.
+    </p>
+
+    <p class="control-error" *ngIf="password.touched && password.dirty && email.invalid">
+        Invalid Email address entered.
+    </p>
+</form>
